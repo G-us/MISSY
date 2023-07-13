@@ -1,11 +1,27 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
-scope = "user-library-read"
+sad = "spotify:track:6xCCgnYGGDWVXqfHzdMkCQ"
+jazz = "spotify:track:2ifRmHoyg1f2pUtFhlqrn2"
+waiting = "spotify:track:4qkYiZablQoG7f0Qu4Nd1c"
+
+scope = "user-library-read, streaming"
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 
-results = sp.current_user_saved_tracks()
-for idx, item in enumerate(results['items']):
-    track = item['track']
-    print(idx, track['artists'][0]['name'], " – ", track['name'])
+sp.start_playback(uris=[waiting])
+
+mode = input("What does your heart desire? ")
+
+if mode == "user":
+    import userDecides
+else:
+    print("not valid")
+
+def playSong(state):
+    if state == "sad":
+        sp.start_playback(uris=[sad])
+    elif state == "jazz":
+        sp.start_playback(uris=[jazz])
+    else:
+        print("what")
