@@ -1,27 +1,27 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+import apscheduler
 
 sad = "spotify:track:6xCCgnYGGDWVXqfHzdMkCQ"
 jazz = "spotify:track:2ifRmHoyg1f2pUtFhlqrn2"
-waiting = "spotify:track:4qkYiZablQoG7f0Qu4Nd1c"
+waiting = "spotify:track:1ZlnsAT3J7vmf0xuOMHD9V"
 
-scope = "user-library-read, streaming"
+scope = "user-library-read, streaming, user-read-playback-state, user-modify-playback-state, user-read-currently-playing"
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 
-sp.start_playback(uris=[waiting])
+def playSong(uri, fade, sp):
+    if fade:
+        startingVolume = sp.current_playback()["device"]["volume_percent"]
+        for i in range(0, startingVolume):
+            sp.volume(i)
+        sp.start_playback(uris=[uri])
 
-mode = input("What does your heart desire? ")
 
-if mode == "user":
-    import userDecides
-else:
-    print("not valid")
+if __name__ == "__main__":
 
-def playSong(state):
-    if state == "sad":
-        sp.start_playback(uris=[sad])
-    elif state == "jazz":
-        sp.start_playback(uris=[jazz])
-    else:
-        print("what")
+    sp.start_playback(uris=[waiting])
+
+    mode = input("Enter mode: ")
+
+    if mode == "watch":
+        import getWatchData
