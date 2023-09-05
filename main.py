@@ -19,13 +19,13 @@ def useHeartData(heartRate, SpotifyPlay):
     global state
     if heartRate > 90 and state != 1:
         print("Heart rate is too high!")
-        playSong("spotify:track:7cO24uuqaMv6YPImQinBgQ", fade=True, sp=SpotifyPlay)
+        playSong("spotify:track:7cO24uuqaMv6YPImQinBgQ", fade=False, sp=SpotifyPlay)
         print(state)
         state = 1
         print(state)
     elif heartRate < 60 and state != 2:
         print("Heart rate is too low!")
-        playSong("spotify:track:3qs1ozCx271UQqmzC7oNuj", fade=True, sp=SpotifyPlay)
+        playSong("spotify:track:3qs1ozCx271UQqmzC7oNuj", fade=False, sp=SpotifyPlay)
         print(state)
         state = 2
         print(state)
