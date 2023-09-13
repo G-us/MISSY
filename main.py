@@ -32,7 +32,9 @@ if __name__ == "__main__":
 
     mode = input("Enter mode: ")
 
-    if mode == "watch":
+    if mode == "w":
         import getWatchData
+    elif mode == "m":
+        import manualData
 
 state = 0
