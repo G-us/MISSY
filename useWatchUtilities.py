@@ -18,8 +18,3 @@ def useHeartData(heartRate):
         print(state)
         state = 2
         print(state)
-
-
-while True:
-    heartRate = input("Enter heart rate: ")
-    useHeartData(int(heartRate))

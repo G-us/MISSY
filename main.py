@@ -27,6 +27,6 @@ if __name__ == "__main__":
     if mode == "w":
         import getWatchData
     elif mode == "m":
-        import manualData
+        import manualWatchData
 
 state = 0
